@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.Controller;
 
+import com.example.demo.Service.PersonService;
+import com.example.demo.Collections.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -19,7 +21,7 @@ public class PersonController {
 
     @GetMapping("/{id}")
     public Mono<Person> getPerson(@PathVariable("id") String id) {
-        return Mono.just(new Person());
+        return personService.findById(id);
     }
 
     @PutMapping
